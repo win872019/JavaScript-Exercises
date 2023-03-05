@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="en">
+    <title>p.439</title>
+
+</head>
+<body>
+    <script>
+        var passengers = [ { name: "Jane Doloop", paid: true, ticket: "coach" },
+                           { name: "Dr. Evel", paid: true, ticket: "firstclass" },
+                           { name: "Sue property", paid: false, ticket: "firstclass" },
+                           { name: "John Funcall", paid: true, ticket: "coach" } ];
+
+        function check(passengers) {
+            for (var i = 0; i < passengers.length; i++) {
+                if (!passengers[i].paid) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function chckNoFly(passengers) {
+            for (var i = 0; i < passengers.length; i++) {
+                if (onNoFlyList(passengers[i].name)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function printPassengers(passengers) {
+            for (var i = 0; i < passengers.length; i++) {
+                console.log(passengers[i].name);
+                return false;
+            }
+            return true;
+        }
+
+        function serveCustomer(passenger) {
+            if (passenger.ticket === "firstclass") {
+                alert("Would you like a cocktail or wine?");
+            } else {
+                alert("Your choice is cola or water.");
+            }
+        }
+
+    </script>
+
+</body>
+</html>

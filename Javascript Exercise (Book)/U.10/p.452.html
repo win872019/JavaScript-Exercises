@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="en">
+    <title>p.439-455</title>
+
+</head>
+<body>
+    <script>
+        var passengers = [ { name: "Jane Doloop", paid: true, ticket: "coach" },
+                           { name: "Dr. Evel", paid: true, ticket: "firstclass"  },
+                           { name: "Sue property", paid: false, ticket: "firstclass"  },
+                           { name: "John Funcall", paid: true, ticket: "coach"  } ];
+
+
+        //p.446
+        function processPassengers(passengers, testFunction) {
+            for (var i = 0; i < passengers.length; i++) {
+                if (testFunction(passengers[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function chckNoFlyList(passenger) {
+            return (passenger.name === "Dr. Evel");
+        }
+
+        function checkNotpaid(passenger) {
+            return (!passenger.paid);
+        }
+
+
+        //p.448 (ans:p.468)
+        function printPassenger(passenger) {
+            var message = passenger.name;
+            if (passenger.paid === true) {
+                message = message + " has paid";
+            } else {
+                message = message + " has not paid";
+            }
+            console.log(message);
+            return false;
+        }
+
+
+        //p.451
+        /*
+        function serveCustomer(passenger) {
+            if (passenger.ticket === "firstclass") {
+                alert("Would you like a cocktail or wine?");
+            } else {
+                alert("Your choice is cola or water.");
+            }
+        }
+        */
+        
+        //p.452
+
+        function createDrinkOrder(passenger) {
+            if (passenger.ticket === "firstclass") {
+                alert("Would you like a cocktail or wine?");
+            } else {
+                alert("Your choice is cola or water.");
+            }
+        }
+        
+        function serveCustomer(passenger) {
+            createDrinkOrder(passenger);
+        }
+
+
+        //p.454
+        function createDrinkOrder(passenger) {
+            var orderFunction;
+
+            if (passenger.ticket === "firstclass") {
+                orderFunction = function() {
+                    alert("Would you like a cocktail or wine?");
+                };
+            } else {
+                orderFunction = function() {
+                    alert("Your choice is cola or water.");
+                };
+            }
+            return orderFunction;
+        }
+
+        function serveCustomer(passenger) {
+            var getDrinkFunction = createDrinkOrder(passenger);
+            getDrinkFunction();
+            //讓乘客點晚餐
+            getDrinkFunction();
+            getDrinkFunction();
+            //播放電影
+            getDrinkFunction();
+            //收拾垃圾
+        }
+
+
+        //p.455
+        function servePassengers(passengers) {
+            for (var i = 0; i < passengers.length; i++) {
+                serveCustomer(passengers[i]);
+            }
+        }
+
+        servePassengers(passengers);
+
+/*
+        //p.448 (ans:p.468)
+        processPassengers(passengers, printPassenger);
+
+
+        //p.447
+        var allCanFly = processPassengers(passengers, chckNoFlyList);
+        if (!allCanFly) {
+            console.log("The plane can't take off: we have a passenger on the no-fly-list.");
+        }
+
+        var allpaid = processPassengers(passengers, checkNotpaid);
+        if (!allpaid) {
+            console.log("The plane can't take off: not everyone has paid.");
+        }
+*/
+    </script>
+
+</body>
+</html>

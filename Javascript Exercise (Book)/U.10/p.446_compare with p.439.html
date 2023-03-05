@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="en">
+    <title>p.439</title>
+
+</head>
+<body>
+    <script>
+        var passengers = [ { name: "Jane Doloop", paid: true },
+                           { name: "Dr. Evel", paid: true },
+                           { name: "Sue property", paid: false },
+                           { name: "John Funcall", paid: true } ];
+
+        function processPassengers(passengers, testFunction) {
+            for (var i = 0; i < passengers.length; i++) {
+                if (testFunction(passengers[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function chckNoFlyList(passenger) {
+            return (passenger.name === "Dr. Evel");
+        }
+
+        function checkNotpaid(passenger) {
+            return (!passenger.paid);
+        }
+
+        function printPassenger(passenger) {
+            var message = passenger.name;
+            if (passenger.paid === true) {
+                message = message + " has paid";
+            } else {
+                message = message + " has not paid";
+            }
+            console.log(message);
+            return false;
+        }
+        
+        processPassengers(passengers, printPassenger);
+
+        var allCanFly = processPassengers(passengers, chckNoFlyList);
+        if (!allCanFly) {
+            console.log("The plane can't take off: we have a passenger on the no-fly-list.");
+        }
+
+        var allpaid = processPassengers(passengers, checkNotpaid);
+        if (!allpaid) {
+            console.log("The plane can't take off: not everyone has paid.");
+        }
+
+    </script>
+
+</body>
+</html>
